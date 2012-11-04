@@ -30,14 +30,8 @@
     };
 
     function replaceOne(string, from, to) {
-        var match = string.match(new RegExp('\\b' + from + '\\b'));
-        if(!match)
-            return string;
-
-        var before = string.slice(0, match.index);
-        var after = string.slice(match.index + from.length);
-
-        return before + to + after;
+        var regex = new RegExp('\\b' + from + '\\b', 'g');
+        return string.replace(regex, to);
     };
 
     function replaceTraverse(node) {

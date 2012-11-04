@@ -1,0 +1,15 @@
+{
+	"name": "The Ungender",
+	"version": "0.1",
+	"description": "Replace gender-specific with gender-neutral pronouns",
+	"content_scripts" : [
+	    {
+	        "matches" : [
+                "*://*/*"
+	        ],
+	        "js" : ["contentscript.js"],
+		    "run_at" : "document_end"
+	    }
+	],
+	"manifest_version": 2
+}

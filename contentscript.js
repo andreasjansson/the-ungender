@@ -1,7 +1,5 @@
 (function() {
 
-    var FANCY_MODE = false;
-
     var map = {
         'she': 'ze',
         'he': 'ze',
@@ -27,28 +25,8 @@
             replaced = replaceOne(replaced, key.toUpperCase(), value.toUpperCase());
         }
 
-        if(replaced != textNode.data) {
-            if(FANCY_MODE) {
-                var parent = textNode.parentNode;
-                var next = textNode.nextSibling;
-                parent.removeChild(textNode);
-                var div = document.createElement('div');
-                div.innerHTML = replaced;
-                var childCount = div.childNodes.length;
-                for(var i = 0; i < childCount; i ++) {
-                    var el = div.childNodes[0];
-                    if(next) {
-                        parent.insertBefore(el, next);
-                    }
-                    else {
-                        parent.appendChild(el);
-                    }
-                }
-            }
-            else {
-                textNode.data = replaced;
-            }
-        }
+        if(replaced != textNode.data)
+            textNode.data = replaced;
     };
 
     function replaceOne(string, from, to) {
@@ -58,12 +36,8 @@
 
         var before = string.slice(0, match.index);
         var after = string.slice(match.index + from.length);
-        if(FANCY_MODE)
-            var insert = '<ungender data-prev="' + from + '">' + to + '</ungender>';
-        else
-            var insert = to;
 
-        return before + insert + after;
+        return before + to + after;
     };
 
     function replaceTraverse(node) {
